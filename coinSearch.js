@@ -32,18 +32,29 @@ anime.timeline({ loop: false }).add({
   delay: (el, i) => 800 * i,
 });
 
+let currURL = new URL(window.location.href);
+let params = new URLSearchParams(currURL.search);
+
+if (params.has("query")) {
+  getData(
+    "https://api.coingecko.com/api/v3/search?query=" + params.get("query")
+  ).then((res) => {
+    displaySearchedCoins(res.coins);
+  });
+}
+
 let inputName = document.getElementById("inputName");
 let coinBtn = document.getElementById("coinBtn");
 let searchResults = document.getElementById("searchResults");
 
-coinBtn.addEventListener("click", searchedCoins);
+// coinBtn.addEventListener("click", searchedCoins);
 
-async function searchedCoins() {
-  let url = "https://api.coingecko.com/api/v3/search?query=" + inputName.value;
-  let coinData = await getData(url);
-  console.log(coinData);
-  displaySearchedCoins(coinData.coins);
-}
+// async function searchedCoins() {
+//   let url = "https://api.coingecko.com/api/v3/search?query=" + inputName.value;
+//   let coinData = await getData(url);
+//   console.log(coinData);
+//   displaySearchedCoins(coinData.coins);
+// }
 
 async function getData(url) {
   let response = await fetch(url);

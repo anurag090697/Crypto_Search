@@ -111,7 +111,7 @@ function topCoinsDisplay(coins, exRate) {
     coinInfo.append(coinPrice);
 
     coinDiv.append(coinLogo, coinInfo);
-    coinDiv.classList.add("oneCoin", "swiper-slide");
+    coinDiv.classList.add("oneCoin", "carousel-cell");
     topCoins.append(coinDiv);
   });
 }
