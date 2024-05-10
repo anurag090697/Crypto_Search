@@ -79,7 +79,7 @@ function displaySearchedCoins(arr) {
 
     let infoBtn = document.createElement("a");
     infoBtn.innerHTML = `<button class="button-35" role="button">More Info</button>`;
-    // infoBtn.href =
+    infoBtn.href = "coin_Detail.html?id=" + ele.id;
     rightPart.append(infoBtn);
 
     coinBox.append(rightPart);

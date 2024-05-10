@@ -24,28 +24,53 @@ anime
     delay: 1000,
   });
 
+let currURL = new URL(window.location.href);
+let params = new URLSearchParams(currURL.search);
+
+if (!params.has("id")) {
+  window.location.href = "coinSearch.html";
+} else {
+  getData(
+    `https://api.coingecko.com/api/v3/coins/${params.get(
+      "id"
+    )}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+  ).then((res) => {
+    showDetailedInfo(res);
+  });
+}
+
 let imgValue = document.getElementById("imgValue");
 let coinHistory = document.getElementById("coinHistory");
 let coinPic = document.getElementById("CoinPic");
 
 let nameCoin = document.getElementById("nameCoin");
+let coinChart = document.getElementById("coinChart");
 
+let coinRs = document.getElementById("coinRs");
+let dolCoin = document.getElementById("dolCoin");
+let euroCoin = document.getElementById("euroCoin");
+let pndCoin = document.getElementById("pndCoin");
+let btcvalue = document.getElementById("btcvalue");
 
 window.addEventListener("load", showDetailedInfo());
-async function showDetailedInfo() {
-  let url = `https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`;
-  let data = await getData(url);
-  console.log(data);
 
- 
- coinPic.src = data.image.large;
+async function showDetailedInfo(data) {
+//   let url = `https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`;
+//   let data = await getData(url);
+//   console.log(data);
 
-nameCoin.innerHTML = data.name + " (" + data.symbol +")";
+  coinPic.src = data.image.large;
 
-let temp = `<p> ${data.description.en} </p>`;
-coinHistory.append(temp);
+  nameCoin.innerHTML = data.name + " (" + data.symbol + ")";
 
+  coinRs.innerText = " ₹ " + data.market_data.current_price.inr;
+  dolCoin.innerText = " $ " + data.market_data.current_price.usd;
+  euroCoin.innerText = " € " + data.market_data.current_price.eur;
+  pndCoin.innerText = " £ " + data.market_data.current_price.gbp;
+  btcvalue.innerText = " ₿ " + data.market_data.current_price.btc;
 
+  let temp = `<p> ${data.description.en} </p>`;
+  coinHistory.append(temp);
 }
 
 // 249231.3891

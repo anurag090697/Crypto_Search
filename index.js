@@ -49,33 +49,29 @@ anime
     delay: (el, i) => 34 * (i + 1),
   });
 
-
 //   const swiper = new Swiper('.swiper', {
 //     // Optional parameters
 //     direction: 'vertical',
 //     loop: true,
-  
+
 //     // If we need pagination
 //     pagination: {
 //       el: '.swiper-pagination',
 //     },
-  
+
 //     // Navigation arrows
 //     navigation: {
 //       nextEl: '.swiper-button-next',
 //       prevEl: '.swiper-button-prev',
 //     },
-  
+
 //     // And if we need scrollbar
 //     scrollbar: {
 //       el: '.swiper-scrollbar',
 //     },
 //   });
 
-
 let topCoins = document.getElementById("topCoins");
-
-
 
 window.addEventListener("load", async () => {
   let exRate = await getData(
@@ -84,11 +80,10 @@ window.addEventListener("load", async () => {
   console.log(exRate);
 
   let coins = await getData("https://api.coingecko.com/api/v3/search/trending");
-  
+
   console.log(coins);
   topCoinsDisplay(coins.coins, exRate.bitcoin.inr);
 });
-
 
 async function getData(url) {
   let response = await fetch(url);
@@ -107,7 +102,7 @@ function topCoinsDisplay(coins, exRate) {
     let coinInfo = document.createElement("div");
 
     let coinName = document.createElement("h2");
-    coinName.innerText = element.item.name + "( " + element.item.symbol + " )" ;
+    coinName.innerText = element.item.name + "( " + element.item.symbol + " )";
     coinInfo.append(coinName);
 
     let coinPrice = document.createElement("p");
@@ -121,6 +116,6 @@ function topCoinsDisplay(coins, exRate) {
   });
 }
 
-function calculatePrice(a, b){
-    return Math.round(a * b * 10000) / 10000;
+function calculatePrice(a, b) {
+  return Math.round(a * b * 10000) / 10000;
 }
