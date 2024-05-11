@@ -79,8 +79,8 @@ async function showDetailedInfo(data) {
   pndCoin.innerText = " £ " + data.market_data.current_price.gbp;
   btcvalue.innerText = " ₿ " + data.market_data.current_price.btc;
 
-  let temp = `<p> ${data.description.en} </p>`;
-  coinHistory.append(temp);
+  coinHistory.innerHTML = `<h2>Price History</h2> <p> ${data.description.en} </p>`;
+  //   coinHistory.append(temp);
   coinInfo.style.contentVisibility = "visible";
 }
 

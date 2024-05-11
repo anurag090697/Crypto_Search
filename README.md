@@ -22,11 +22,16 @@
 - HTML
 - CSS
 - JavaScript
-- React.js
-- Flickity (for carousel display)
+<!-- - Flickity (for carousel display) -->
 - CoinGecko API (for cryptocurrency data)
 
-[## HOSTED LINK](https://anurag090697.github.io/Crypto_Search/)
+## HOSTED LINK
+
+[Click here to view the LeaderBoard](https://anurag090697.github.io/Crypto_Search/)
+
+## Contributors
+
+- [Anurag Shukla](https://github.com/anurag090697)
 
 ## Contributing
 
@@ -38,5 +43,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature/new-feature`).
 6. Create a new Pull Request.
-
-

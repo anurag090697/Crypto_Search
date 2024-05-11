@@ -49,28 +49,6 @@ anime
     delay: (el, i) => 34 * (i + 1),
   });
 
-//   const swiper = new Swiper('.swiper', {
-//     // Optional parameters
-//     direction: 'vertical',
-//     loop: true,
-
-//     // If we need pagination
-//     pagination: {
-//       el: '.swiper-pagination',
-//     },
-
-//     // Navigation arrows
-//     navigation: {
-//       nextEl: '.swiper-button-next',
-//       prevEl: '.swiper-button-prev',
-//     },
-
-//     // And if we need scrollbar
-//     scrollbar: {
-//       el: '.swiper-scrollbar',
-//     },
-//   });
-
 let topCoins = document.getElementById("topCoins");
 
 window.addEventListener("load", async () => {
@@ -111,9 +89,24 @@ function topCoinsDisplay(coins, exRate) {
     coinInfo.append(coinPrice);
 
     coinDiv.append(coinLogo, coinInfo);
-    coinDiv.classList.add("oneCoin", "carousel-cell");
+    coinDiv.classList.add("oneCoin", "slide");
     topCoins.append(coinDiv);
   });
+  // const topCoins = document.querySelector('#topCoins');
+
+// Function to start the animation
+function startAnimation() {
+  topCoins.classList.add('animated');
+}
+
+// Function to stop the animation
+function stopAnimation() {
+  topCoins.classList.remove('animated');
+}
+
+// (Optional) Start the animation initially
+startAnimation();
+  
 }
 
 function calculatePrice(a, b) {
